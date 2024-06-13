@@ -16,6 +16,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src")
     }
   },
+  output: {
+    assetPrefix: "./"
+  },
+  dev: {
+    assetPrefix: "/test/abc/"
+  },
   server: {
     publicDir: {
       name: path.resolve(__dirname, "public")

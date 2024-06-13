@@ -2,7 +2,7 @@ import { App, DirectiveBinding } from "vue";
 
 const boldDirective = {
   name: "bold",
-  directive: (el: HTMLElement, binding: DirectiveBinding) => {
+  main: (el: HTMLElement, binding: DirectiveBinding) => {
     if (binding.value) {
       el.style.fontWeight = binding.value;
     } else {
@@ -11,6 +11,8 @@ const boldDirective = {
   }
 };
 
-export function globalDirectiveRegister(app: App) {
-  app.directive(boldDirective.name, boldDirective.directive);
-}
+export const directives = {
+  install(app: App) {
+    app.directive(boldDirective.name, boldDirective.main);
+  }
+};
