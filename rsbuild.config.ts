@@ -3,6 +3,9 @@ import { pluginVue } from "@rsbuild/plugin-vue";
 import { pluginSass } from "@rsbuild/plugin-sass";
 import path from "node:path";
 
+const assetPrefix = process.env.ASSET_PREFIX || "./";
+const distRootPath = process.env.DIST_ROOT_PATH || "dist";
+
 export default defineConfig({
   plugins: [pluginVue(), pluginSass()],
   html: {
@@ -17,10 +20,13 @@ export default defineConfig({
     }
   },
   output: {
-    assetPrefix: "./"
+    assetPrefix: assetPrefix,
+    distPath: {
+      root: path.resolve(__dirname, distRootPath)
+    }
   },
   dev: {
-    assetPrefix: "/test/abc/"
+    assetPrefix: assetPrefix
   },
   server: {
     publicDir: {

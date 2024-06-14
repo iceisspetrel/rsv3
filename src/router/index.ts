@@ -16,6 +16,6 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 export const router = createRouter({
-  history: createWebHistory("/test/abc/"),
+  history: createWebHistory(),
   routes
 });

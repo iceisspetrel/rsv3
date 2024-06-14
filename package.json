@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
+    "build:nginx": "rsbuild build",
+    "build:dep": "cross-env ASSET_PREFIX=/abc/def/ DIST_ROOT_PATH=../../ghsj-server/src/main/resources/web  rsbuild build",
     "preview": "rsbuild preview",
     "build:docker": "docker build --progress=plain -t rsv3:v0.1 ."
   },
@@ -18,6 +20,7 @@
     "@rsbuild/plugin-sass": "^0.7.3",
     "@rsbuild/plugin-vue": "^0.7.3",
     "@vue/compiler-sfc": "^3.4.27",
+    "cross-env": "^7.0.3",
     "typescript": "^5.4.2"
   }
 }
