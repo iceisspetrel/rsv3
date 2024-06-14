@@ -9,7 +9,15 @@ const distRootPath = process.env.DIST_ROOT_PATH || "dist";
 export default defineConfig({
   plugins: [pluginVue(), pluginSass()],
   html: {
-    template: path.resolve(__dirname, "public", "index.html")
+    // 设置网站图标，自动匹配output.assetPrefix或者dev.assetPrefix
+    favicon: path.resolve(__dirname, "public", "favicon.png"),
+    // 设置网页入口html模板文件
+    template: path.resolve(__dirname, "public", "index.html"),
+    // 设置网页中可使用的参数
+    // 使用方式 <%= title %>
+    templateParameters: {
+      title: "网页标题"
+    }
   },
   source: {
     entry: {
@@ -17,11 +25,21 @@ export default defineConfig({
     },
     alias: {
       "@": path.resolve(__dirname, "src")
+    },
+    // 定义编译时环境变量
+    define: {
+      "process.env": JSON.stringify({
+        ASSET_PREFIX: assetPrefix,
+        DIST_ROOT_PATH: distRootPath
+      }),
+      "process.env.TEST": JSON.stringify("process_env_test")
     }
   },
   output: {
     assetPrefix: assetPrefix,
+    cleanDistPath: true,
     distPath: {
+      // 设置打包输出目录
       root: path.resolve(__dirname, distRootPath)
     }
   },

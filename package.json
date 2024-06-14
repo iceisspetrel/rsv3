@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
-    "build:nginx": "rsbuild build",
-    "build:dep": "cross-env ASSET_PREFIX=/abc/def/ DIST_ROOT_PATH=../../ghsj-server/src/main/resources/web  rsbuild build",
+    "build:nginx": "cross-env DIST_ROOT_PATH=F:\\Develop\\nginx\\nginx_rsbuild\\html rsbuild build",
+    "build:dep": "cross-env ASSET_PREFIX=/ghsj/web/ DIST_ROOT_PATH=F:\\Develop\\nginx\\nginx_rsbuild\\html\\ghsj\\web rsbuild build",
     "preview": "rsbuild preview",
-    "build:docker": "docker build --progress=plain -t rsv3:v0.1 ."
+    "build:docker": "docker build --progress=plain -t rsv3:v0.1 .",
+    "inspect": "rsbuild inspect"
   },
   "dependencies": {
+    "element-plus": "^2.7.5",
     "pinia": "^2.1.7",
     "vue": "^3.4.19",
     "vue-router": "^4.3.2"
@@ -19,6 +21,7 @@
     "@rsbuild/core": "^0.7.3",
     "@rsbuild/plugin-sass": "^0.7.3",
     "@rsbuild/plugin-vue": "^0.7.3",
+    "@types/node": "^20.14.2",
     "@vue/compiler-sfc": "^3.4.27",
     "cross-env": "^7.0.3",
     "typescript": "^5.4.2"

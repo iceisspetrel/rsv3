@@ -3,7 +3,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    redirect: "/home"
+    redirect: "/main"
   },
   {
     path: "/home",
@@ -15,7 +15,9 @@ const routes: Array<RouteRecordRaw> = [
   }
 ];
 
+console.log(process.env.ASSET_PREFIX, "process.env.ASSET_PREFIX");
+
 export const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.ASSET_PREFIX),
   routes
 });
